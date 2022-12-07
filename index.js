@@ -44,13 +44,13 @@ function getRandomCard() {
 }
 
 function startGame() {
-    // deal player cards
+    // set player cards
     isAlive = true
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
     cards = [firstCard, secondCard]
     sum = firstCard + secondCard
-    // deal dealer cards
+    // set dealer cards
     dealerAlive = true
     let dealerHidden = "?"
     let dealerShown = getRandomCard()
