@@ -64,7 +64,7 @@ function renderGame() {
     for (let i = 0; i < dealerCards.length; i++) {
         dealerCardsEl.textContent += dealerCards[i] + " "
     }
-    dealerSumEl.textContent = "Sum: " + sum
+    dealerSumEl.textContent = "Sum: ??"
     // render player state
     playerCardsEl.textContent = "Cards: "
     for (let i = 0; i < cards.length; i++) {
@@ -91,4 +91,19 @@ function newCard() {
         cards.push(card)
         renderGame()        
     }
+}
+
+function dealerPlay() {
+  dealerHidden = getRandomCard()
+  dealerSum = dealerHidden + dealerShown
+  for (dealerAlive === true && dealerBlackjack === false) {
+    dealerSum 
+    if (dealerSum <= 16) {
+      dealerCards.push(getRandomCard())
+    } else if (dealerSum = 21) {
+      dealerBlackjack = true
+    } else if (dealerSum > 21) {
+      dealerAlive = false
+    }
+  }
 }
