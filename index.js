@@ -15,6 +15,8 @@ let cards = []
 let sum = 0
 let hasBlackJack = false
 let isAlive = false
+// initialize game attributes
+let gameActive = false
 
 // initialize game state message to empty
 let message = ""
@@ -48,6 +50,7 @@ function getRandomCard() {
 }
 
 function startGame() {
+    gameActive = true
     dealPlayer()
     // set dealer cards
     dealerAlive = true
@@ -55,11 +58,10 @@ function startGame() {
     let dealerShown = getRandomCard()
     dealerCards = [dealerHidden, dealerShown]
     dealerSum = 0
+    
     renderPlayer()
     renderDealer()
-    hitBtn.style.display = "block"
-    standBtn.style.display = "block"
-    dealBtn.style.display = "none"
+    buttonToggle()
 }
 
 function dealPlayer() {
@@ -129,9 +131,7 @@ function dealerPlays(){
 function stand() {
     dealerPlays()
     callWinner()
-    hitBtn.style.display = "none"
-    standBtn.style.display = "none"
-    dealBtn.style.display = "block"
+    buttonToggle()
 }
 
 function callWinner() {
@@ -145,8 +145,21 @@ function callWinner() {
         message = `Awesome! You win with ${sum}!`
     }
     renderMessage()
+    gameActive = false
 }
 
 function renderMessage() {
     messageEl.textContent = message
+}
+
+function buttonToggle() {
+  if (gameActive === true) {
+    hitBtn.style.display = "block"
+    standBtn.style.display = "block"
+    dealBtn.style.display = "none"
+  } else {
+    hitBtn.style.display = "none"
+    standBtn.style.display = "none"
+    dealBtn.style.display = "block"
+  }
 }
