@@ -58,7 +58,7 @@ function startGame() {
     let dealerShown = getRandomCard()
     dealerCards = [dealerHidden, dealerShown]
     dealerSum = 0
-    
+    // render game
     renderPlayer()
     renderDealer()
     buttonToggle()
@@ -106,6 +106,8 @@ function renderPlayer() {
     } else if (sum > 21) {
         isAlive = false
         message = "You busted! The dealer wins"
+        gameActive = false
+        buttonToggle()
     }
     renderMessage()
 }
