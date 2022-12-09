@@ -54,6 +54,7 @@ function startGame() {
     dealPlayer()
     // set dealer cards
     dealerAlive = true
+    dealerBlackjack = false
     let dealerHidden = "?"
     let dealerShown = getRandomCard()
     dealerCards = [dealerHidden, dealerShown]

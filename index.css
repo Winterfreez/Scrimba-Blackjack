@@ -28,6 +28,17 @@ button {
     margin-top: 2px;
 }
 
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin: 5px;
+}
+
 #stand-btn, #hit-btn {
     display: none;
 }
