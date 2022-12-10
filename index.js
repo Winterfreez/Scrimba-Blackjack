@@ -62,7 +62,13 @@ function startGame() {
     // render game
     renderPlayer()
     renderDealer()
-    buttonToggle()
+    if (sum === 21) {
+      hasBlackJack = true
+      callWinner()
+    } else {
+      renderDealer()
+      buttonToggle()
+    }
 }
 
 function dealPlayer() {
@@ -126,6 +132,8 @@ function dealerPlays(){
   let dealerTotal = 0
     dealerCards.shift()
     dealerCards.unshift(getRandomCard())
+    dealerSum = dealerCards[0] + dealerCards[1]
+    console.log("dealer starts to play: " + dealerSum)
     while (dealerAlive === true && dealerBlackjack === false) {
       if (dealerSum < 17) {
         dealerCards.push(getRandomCard())
@@ -153,11 +161,13 @@ function stand() {
 }
 
 function callWinner() {
-    if (sum === dealerSum) {
+    if (hasBlackJack === true) {
+      message = "Blackjack! You win!"
+    } else if (sum === dealerSum) {
         message = "It's a draw, you get your chips back"
     } else if (dealerBlackjack === true) {
         message = "Dealer has 21, better luck next time"
-    } else if (dealerAlive === false) {
+    } else if (dealerAlive === false && dealerSum > 21) {
       message = `Dealer busts with ${dealerSum}, you win!`
     } else if (sum < dealerSum) {
         message = `Dealer wins with ${dealerSum}, better luck next time`
