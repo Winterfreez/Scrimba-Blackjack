@@ -50,15 +50,14 @@ function getRandomCard() {
 }
 
 function startGame() {
+    shuffle()
     gameActive = true
     dealPlayer()
     // set dealer cards
     dealerAlive = true
-    dealerBlackjack = false
     let dealerHidden = "?"
     let dealerShown = getRandomCard()
     dealerCards = [dealerHidden, dealerShown]
-    dealerSum = 0
     // render game
     renderPlayer()
     renderDealer()
@@ -110,6 +109,8 @@ function renderPlayer() {
     if (sum === 21) {
         hasBlackJack = true
         dealerPlays()
+        callWinner()
+        buttonToggle()
     } else if (sum > 21) {
         isAlive = false
         message = "You busted! The dealer wins"
@@ -133,7 +134,6 @@ function dealerPlays(){
     dealerCards.shift()
     dealerCards.unshift(getRandomCard())
     dealerSum = dealerCards[0] + dealerCards[1]
-    console.log("dealer starts to play: " + dealerSum)
     while (dealerAlive === true && dealerBlackjack === false) {
       if (dealerSum < 17) {
         dealerCards.push(getRandomCard())
@@ -149,7 +149,6 @@ function dealerPlays(){
         dealerTotal += dealerCards[i]
       }
       dealerSum = dealerTotal
-      console.log(dealerSum)
     }
     renderDealer()
 }
@@ -192,4 +191,21 @@ function buttonToggle() {
     standBtn.style.display = "none"
     dealBtn.style.display = "block"
   }
+}
+
+function shuffle() {
+  // player resets
+  isAlive = false
+  hasBlackJack = false
+  cards = []
+  sum = 0
+  
+  // dealer resets
+  dealerAlive = false
+  dealerBlackjack = false
+  dealerCards = []
+  dealerSum = 0
+
+  // game resets
+  gameActive = false
 }
