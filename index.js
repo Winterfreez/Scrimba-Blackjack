@@ -31,12 +31,11 @@ const playerEl = document.getElementById("player-el");
 const dealerSumEl = document.getElementById("dealer-sum-el");
 const dealerCardsEl = document.getElementById("dealer-cards-el");
 // UI elements
-const dealBtn = document.getElementById("deal-btn");
-const hitBtn = document.getElementById("hit-btn");
-const standBtn = document.getElementById("stand-btn");
+const controlBox = document.getElementById("control-box");
 
-// render player name and chip count
+// Render UI elements
 playerEl.textContent = player.name + " $" + player.chips;
+buttonToggle()
 
 function getRandomCard() {
   let randomNumber = Math.floor(Math.random() * 13) + 1;
@@ -181,13 +180,14 @@ function renderMessage() {
 
 function buttonToggle() {
   if (gameActive === true) {
-    hitBtn.style.display = "block";
-    standBtn.style.display = "block";
-    dealBtn.style.display = "none";
-  } else {
-    hitBtn.style.display = "none";
-    standBtn.style.display = "none";
-    dealBtn.style.display = "block";
+    controlBox.innerHTML = `
+    <button id="hit-btn" onclick="newCard()">HIT ME!</button>
+    <button id="stand-btn" onclick="stand()">STAND</button>
+    `
+  } else if (gameActive === false) {
+    controlBox.innerHTML = `
+    <button id="deal-btn" onclick="startGame()">DEAL</button>
+    `
   }
 }
 

@@ -9,15 +9,20 @@
   <body>
     <div class="main-container">
       <h1>Blackjack</h1>
-      <p id="message-el">Want to play a round?</p>
-      <p id="dealer-cards-el">Dealer:</p>
-      <p id="dealer-sum-el">Sum:</p>
-      <p id="player-cards-el">Cards:</p>
-      <p id="player-sum-el">Sum:</p>
-      <div class="control-box">
-        <button id="deal-btn" onclick="startGame()">DEAL</button>
-        <button id="hit-btn" onclick="newCard()">HIT ME!</button>
-        <button id="stand-btn" onclick="stand()">STAND</button>
+      <h2>Dealer</h2>
+      <div class="card-box" id="dealer-box">
+        <p id="dealer-cards-el"></p>
+        <p id="dealer-sum-el"></p>
+      </div>
+      <h2>Player</h2>
+      <div class="card-box" id="player-box">
+        <p id="player-cards-el"></p>
+        <p id="player-sum-el"></p>
+      </div>
+      <div id="message-box">
+        <h2 class="ui-message" id="message-el">Want to play a round?</h2>
+      </div>
+      <div class="control-box" id="control-box">
       </div>
       <p id="player-el"></p>
     </div>
