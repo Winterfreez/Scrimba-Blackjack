@@ -24,7 +24,7 @@
   box-sizing: border-box;
 }
 
-/* Reset margins */
+/* Margins */
 body,
 h1,
 h2,
@@ -48,14 +48,14 @@ p {
   font-weight: 400;
 }
 
-/* make images easier to work with */
+/* Images */
 img,
 picutre {
   max-width: 100%;
   display: block;
 }
 
-/* make form elements easier to work with */
+/* Form Elements */
 input,
 button,
 textarea,
@@ -81,9 +81,10 @@ select {
 
 /* Foundation layer */
 body {
+  margin-top: 3svh;
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: center;
+  justify-items: center;
   background-image: url("images/table.png");
   background-size: cover;
 }
@@ -102,7 +103,8 @@ div {
   font-family: var(--ff-sans);
   font-weight: bold;
   color: var(--clr-bright);
-  height: 100vh;
+  height: 95svh;
+  width: clamp(20rem, 50vw, 40rem);
 }
 
 /* Typography */
