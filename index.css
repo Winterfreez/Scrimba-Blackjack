@@ -1,46 +1,174 @@
-body {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", Arial,
+/*---------------------*/
+/*  Custom Properties  */
+/*---------------------*/
+
+:root {
+  /* Font Families */
+  --ff-sans: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", Arial,
     sans-serif;
+
+  /* Colors */
+  --clr-bright: white;
+  --clr-midtone: goldenrod;
+  --clr-dark: #016f32;
+}
+
+/*----------*/
+/*  Resets  */
+/*----------*/
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* Images */
+img,
+picutre {
+  max-width: 100%;
+  display: block;
+}
+
+/* Form Elements */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*----------------*/
+/*  Base Styling  */
+/*----------------*/
+
+/* Foundation layer */
+body {
+  margin-top: 3svh;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
   background-image: url("images/table.png");
   background-size: cover;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-}
-
-h1 {
-  color: goldenrod;
-}
-
-#message-el {
-  font-style: italic;
-}
-
-button {
-  color: #016f32;
-  width: 150px;
-  background: goldenrod;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-weight: bold;
-  border: none;
-  border-radius: 2px;
-  margin-bottom: 2px;
-  margin-top: 2px;
 }
 
 div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 300px;
+}
+
+.main-container {
+  justify-content: flex-start;
+  font-family: var(--ff-sans);
+  font-weight: bold;
+  color: var(--clr-bright);
+  height: 95svh;
+  width: clamp(20rem, 50vw, 40rem);
+}
+
+/* Typography */
+h1 {
+  color: var(--clr-midtone);
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: .25rem 0 0 0;
+}
+
+p {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+/*--------------------*/
+/*  Specific Styling  */
+/*--------------------*/
+
+#message-box {
+  width: 95%;
+  margin: 0;
+  height: 5rem;
+}
+
+#message-el {
+  font-style: italic;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 button {
-  margin: 5px;
+  color: var(--clr-dark);
+  background: var(--clr-midtone);
+  width: 6rem;
+  padding: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
 }
 
-#stand-btn,
-#hit-btn {
-  display: none;
+.control-box > :where(:not(:first-child)) {
+  margin-top: .5rem;
+}
+
+.card-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: .5rem 0;
+  padding: .5rem;
+  width: 90%;
+  min-width: 290px;
+  height: 8rem;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
+}
+
+.control-box {
+  justify-content: flex-start;
+  height: 7rem;
 }
